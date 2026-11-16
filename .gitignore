@@ -1,0 +1,66 @@
+# WindowVNC
+#
+# 会被提交的内容（供参考，勿加忽略规则）：
+#   Package.swift  Sources/  Bundle/Info.plist  scripts/  build_app.sh  README.md
+#
+# 下面全部由编译、打包或系统自动产生，随时可重新生成。
+
+# ── macOS 系统垃圾 ────────────────────────────────────────────
+.DS_Store
+._*
+.Spotlight-V100
+.Trashes
+.fseventsd
+.LSOverride
+
+# ── SwiftPM 编译缓存 ─────────────────────────────────────────
+# .build/ 是默认 scratch 目录；.build-arm64/ 与 .build-x86_64/ 由
+# build_app.sh 为通用二进制分别编译时生成。
+.build/
+.build-*/
+.swiftpm/
+DerivedData/
+
+# 注意：Package.resolved 需要提交（锁定依赖版本），不要加入忽略。
+# 本项目目前用 .systemLibrary(CZlib) 引系统 zlib，暂时没有该文件。
+
+# ── 构建产物 ─────────────────────────────────────────────────
+# build/ 里的 WindowVNC.app、AppIcon.icns、AppIcon.iconset、
+# icon_preview.png、dmg-stage/、公证用的 zip 全是生成物。
+build/
+dist/
+
+# 发布包即使被挪到别处也不入库
+*.dmg
+*.pkg
+
+# ── 签名 / 公证相关的本机文件 ───────────────────────────────
+# 证书、描述文件和公证凭据都不该进仓库
+*.p12
+*.cer
+*.provisionprofile
+*.mobileprovision
+notarytool-*.json
+.env
+
+# ── 日志与崩溃报告 ───────────────────────────────────────────
+# App 自身日志写在 ~/Library/Logs/WindowVNC.log，
+# 这里兜住从仓库目录直接跑构建时落下的日志。
+*.log
+*.crash
+*.ips
+
+# ── 调试符号与中间产物 ──────────────────────────────────────
+*.dSYM/
+*.swiftmodule
+*.swiftdoc
+
+# ── 编辑器 / IDE ────────────────────────────────────────────
+xcuserdata/
+*.xcuserstate
+*.xccheckout
+*.xcscmblueprint
+.vscode/
+.idea/
+*.swp
+*~
